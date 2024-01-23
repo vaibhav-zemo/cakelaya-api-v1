@@ -1,0 +1,43 @@
+<div>
+    <p><b>Name:</b>
+        <%=order.name%>
+    </p>
+    <p><b>Time:</b>
+        <%=order.time%>
+    </p>
+    <p><b>Occasion:</b>
+        <%=order.occassion%>
+    </p>
+    <p><b>Name on Cake:</b>
+        <%=order.cakeName%>
+    </p>
+    <p><b>Address:</b>
+        <%=order.address%>
+    </p>
+    <p><b>Number:</b>
+        <%=order.number%>
+    </p>
+    <h1><b>
+            Products:-
+        </b>
+    </h1>
+    <ul>
+        <%for(product of order.products){%>
+            <li>
+                <img src="<%=product.img%>" alt="" width="200px" height="200px">
+                <p><b>Name:-</b>
+                    <%=product.productId%>
+                </p>
+                <p><b>Quantity:-</b>
+                    <%=product.quantity%>
+                </p>
+                <p><b>Size:-</b>
+                    <%=product.size%>
+                </p>
+                <p><b>Flavour:-</b>
+                    <%=product.flavour%>
+                </p>
+            </li>
+            <%}%>
+    </ul>
+</div>
