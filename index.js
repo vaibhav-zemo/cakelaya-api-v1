@@ -55,13 +55,9 @@ app.post("/api/images", upload.single("image"), (req, res) => {
   res.send({ img });
 });
 
-app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "/client/build/index"));
-
-app.use(express.static(path.join(__dirname, "../client/build")));
-app.get("*", (req, res) =>
-  res.sendFile(path.join(__dirname, "../client/build/index.html"))
-);
+app.get('/', (req, res) => {
+  return res.send('Server is up and running.'); 
+})
 
 app.use((err, req, res, next) => {
   res.status(500).send({ message: err.message });
