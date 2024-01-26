@@ -12,7 +12,7 @@ router.post("/orders", async (req, res) => {
             key_id: process.env.RAZORPAY_KEY_ID,
             key_secret: process.env.RAZORPAY_KEY_SECRET,
         })
-
+		
         const options = {
             amount: parseInt(req.body.amount)*100,
             currency: "INR",
@@ -30,11 +30,11 @@ router.post("/orders", async (req, res) => {
 // payment verify
 router.post("/verify", async (req, res) => {
 	try {
-		const { razorpay_order_id, razorpay_payment_id, razorpay_signature } =
+		const { order_id, razorpay_payment_id, razorpay_signature } =
 			req.body;
-		const sign = razorpay_order_id + "|" + razorpay_payment_id;
+		const sign = order_id + "|" + razorpay_payment_id;
 		const expectedSign = crypto
-			.createHmac("sha256", process.env.RAZORPAY_KEY_SECRET)
+			.createHmac("sha256", process.env.TEST_RAZORPAY_KEY_SECRET)
 			.update(sign.toString())
 			.digest("hex");
 
