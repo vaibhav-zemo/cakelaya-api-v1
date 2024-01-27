@@ -34,7 +34,7 @@ router.post("/verify", async (req, res) => {
 			req.body;
 		const sign = order_id + "|" + razorpay_payment_id;
 		const expectedSign = crypto
-			.createHmac("sha256", process.env.TEST_RAZORPAY_KEY_SECRET)
+			.createHmac("sha256", process.env.RAZORPAY_KEY_SECRET)
 			.update(sign.toString())
 			.digest("hex");
 
